@@ -23,4 +23,4 @@ Actions 默認是關閉狀態，在 Fork 之後需要先手動執行一次，成
 
 ![run](https://s2.loli.net/2023/04/25/A1lQeS6nDpYF53y.png)
 
-運行成功後，就大功告成啦!
+運行成功後，就可以繼續睡啦!
