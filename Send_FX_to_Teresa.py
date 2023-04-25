@@ -20,5 +20,5 @@ def lineNotifyMessage(token, msg):
 
 # wrap_up
 message = str('\n' + '國泰美金兌台幣: ' + Cathay_usd + '\n' + '\n' + 'USD to JPY: ' + usd_to_jpy + '\n' + 'USD to NTD: ' + usd_to_ntd + '\n' + 'NTD to JPY: '+ ntd_to_jpy + '\n' + 'source: Google currency')
-token = 'nw5bget1lcPWVdhJrjvhCnigDsb6XWyyf4OVailNqzf'
+token = os.environ['LINE_NOTIFY_TOKEN']
 lineNotifyMessage(token, message)
