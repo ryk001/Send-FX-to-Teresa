@@ -1,0 +1,30 @@
+name: Send-FX-to-Teresa
+
+on:
+  schedule:
+  # scheduled at every 30min during trading hours, (UTC+8), weekdays
+    - cron: "30 0 * * 1,2,3,4,5"
+  workflow_dispatch:
+
+env:
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
+jobs:
+  scrape-latest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      
+      - name: Set up Python
+        uses: actions/setup-python@v2.0.0
+        with:
+          python-version: '3.8'
+      
+      - name: Install requirements
+        run: pip install -r requirements.txt
+      
+      - name: Run Python Code
+        env:
+          LINE_NOTIFY_TOKEN: ${{ secrets.LINE_NOTIFY_TOKEN }}
+        run: python Send_FX_to_Teresa.py
