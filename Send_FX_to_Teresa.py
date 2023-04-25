@@ -2,6 +2,7 @@
 from google_currency import convert
 import pandas as pd
 import requests
+import os
 
 # get data
 usd_to_jpy = convert('usd', 'jpy', 1)[40:45]
