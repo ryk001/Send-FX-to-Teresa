@@ -2,8 +2,8 @@ name: Send-FX-to-Teresa
 
 on:
   schedule:
-  # scheduled at every 30min during trading hours, (UTC+8), weekdays
-    - cron: "30 0 * * 1,2,3,4,5"
+  # At 00:00 on Monday, Tuesday, Wednesday, Thursday, and Friday.
+    - cron: "0 0 * * 1,2,3,4,5"
   workflow_dispatch:
 
 env:
