@@ -11,7 +11,7 @@ usd_to_ntd = convert('usd', 'twd', 1)[40:45]
 ntd_to_jpy = convert('twd', 'jpy', 1)[40:44]
 
 r = requests.get('https://www.cathaybk.com.tw/cathaybk/personal/product/deposit/currency-billboard')
-cathay_usd = BeautifulSoup(r.text, "lxml").find_all('tr')[1].find_all('td')[2].find('div').text
+cathay_usd = float(BeautifulSoup(r.text, "lxml").find_all('tr')[1].find_all('td')[2].find('div').text)
 
 # send message
 def lineNotifyMessage(token, msg):
@@ -24,7 +24,7 @@ def lineNotifyMessage(token, msg):
 
 # wrap_up
 message =(
-    f'\n國泰美金兌台幣: {cathay_usd}\n\n'
+    f'\n國泰美金兌台幣: {cathay_usd:.2f}\n\n'
     f'USD to JPY: {usd_to_jpy}\n'
     f'USD to NTD: {usd_to_ntd}\n'
     f'NTD to JPY: {ntd_to_jpy}\n'
