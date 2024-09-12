@@ -3,12 +3,13 @@ from google_currency import convert
 from bs4 import BeautifulSoup
 import pandas as pd
 import requests
+import json
 import os
 
 # get data
-usd_to_jpy = convert('usd', 'jpy', 1)[40:45]
-usd_to_ntd = convert('usd', 'twd', 1)[40:45]
-ntd_to_jpy = convert('twd', 'jpy', 1)[40:44]
+usd_to_jpy = json.loads(convert('usd', 'jpy', 1))['amount']
+usd_to_ntd = json.loads(convert('usd', 'twd', 1))['amount']
+ntd_to_jpy = json.loads(convert('twd', 'jpy', 1))['amount']
 
 r = requests.get('https://www.cathaybk.com.tw/cathaybk/personal/product/deposit/currency-billboard')
 cathay_usd = float(BeautifulSoup(r.text, "lxml").find_all('tr')[1].find_all('td')[2].find('div').text)
